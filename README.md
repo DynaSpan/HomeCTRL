@@ -23,10 +23,8 @@ This system is based on a tutorial from Tweaker WeeJeWel. You can find his tutor
        
 		- add on the end of the file the following lines:
          
-		<blockquote>www-data raspberrypi=NOPASSWD: /path/to/lights/folder/./
-        
-        www-data raspberrypi=NOPASSWD: /opt/vc/bin/./
-        
+		<blockquote>www-data raspberrypi=NOPASSWD: /path/to/lights/folder/./<br />
+        www-data raspberrypi=NOPASSWD: /opt/vc/bin/./<br />
         www-data raspberrypi=NOPASSWD: /sbin/iwconfig</blockquote>
    
 	- if you don't want to play it secure:
