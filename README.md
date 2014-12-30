@@ -11,8 +11,6 @@ This system is based on a tutorial from Tweaker WeeJeWel. You can find his tutor
 
 How to use HomeCTRL
 
-
-
 ========
 
 1. Follow the steps in the tutorial above
@@ -32,7 +30,6 @@ How to use HomeCTRL
 		- add on the end of the file the following lines:
          
 		<blockquote>www-data raspberrypi=NOPASSWD: /path/to/lights/folder/./
-
 www-data raspberrypi=NOPASSWD: /opt/vc/bin/./
 
 www-data raspberrypi=NOPASSWD: /sbin/iwconfig</blockquote>
