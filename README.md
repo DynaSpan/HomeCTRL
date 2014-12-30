@@ -30,9 +30,9 @@ How to use HomeCTRL
 		- add on the end of the file the following lines:
          
 		<blockquote>www-data raspberrypi=NOPASSWD: /path/to/lights/folder/./
-www-data raspberrypi=NOPASSWD: /opt/vc/bin/./
+		www-data raspberrypi=NOPASSWD: /opt/vc/bin/./
 
-www-data raspberrypi=NOPASSWD: /sbin/iwconfig</blockquote>
+		www-data raspberrypi=NOPASSWD: /sbin/iwconfig</blockquote>
    
 	- if you don't want to play it secure:
        
