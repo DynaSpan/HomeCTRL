@@ -6,14 +6,9 @@ HomeCTRL
 
 A Raspberry Pi project to control 433MHz wireless relays.
 
-========
-
 
 
 This system is based on a tutorial from Tweaker WeeJeWel. You can find his tutorial <a href="http://weejewel.tweakblogs.net/blog/8665/lampen-schakelen-met-een-raspberry-pi.html">here (Dutch)</a>.
-========
-
-
 
 How to use HomeCTRL
 
