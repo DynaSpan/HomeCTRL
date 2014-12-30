@@ -37,5 +37,3 @@ $main           = new Main($siteUrl);
 $mysql          = new MySQL($mysqlHost, $mysqlUser, $mysqlPass, $mysqlDb);
 $loginHandler   = new LoginHandler($loginUsername, $loginPassword);
 $piHandler      = new PiHandler($wiringPiFolder, $lightsFolder);
-
-?>
