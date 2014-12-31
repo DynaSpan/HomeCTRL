@@ -6,7 +6,7 @@
  * @author Milan Drossaerts
  * @copyright 2014
  */
- 
+
 session_start();
  
 // login info

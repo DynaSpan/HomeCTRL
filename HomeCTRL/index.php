@@ -19,7 +19,17 @@ else
 {
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        
+        if (isset($_POST['uUsername']) && isset($_POST['uPassword']))
+        {
+            if ($loginHandler->checkCredentials($_POST['uUsername'], $_POST['uPassword']))
+            {
+                header("Location: " . $main->siteUrl);
+            }
+            else
+            {
+                $error = 'Username or password was wrong';
+            }
+        }
         
     }
     
@@ -31,6 +41,8 @@ else
     <h1>Login</h1>
     
     <p>You must login before you can continue.</p>
+    
+    <?php if (isset($error)) { echo '<p><br /><strong>' . $error . '</strong><br /><br /></p>'; } ?>
     
     <form action="" method="post">
       <input type="text" name="uUsername" placeholder="Username" />

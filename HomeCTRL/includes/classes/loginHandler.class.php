@@ -25,4 +25,17 @@ class LoginHandler
             
         return false;
     }
+    
+    public function checkCredentials($username, $password)
+    {
+        if ($username == $this->loginUsername && $password == $this->loginPassword)
+        {
+            $_SESSION['uLoggedIn'] = true;
+            $_SESSION['uIp']       = $_SERVER['REMOTE_ADDR'];
+            
+            return true;
+        }
+        
+        return false;
+    }
 }
