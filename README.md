@@ -23,7 +23,7 @@ This system is based on a tutorial from Tweaker WeeJeWel. You can find his tutor
    
 	- if you want to play it secure:
        
-		- add on the end of the file the following lines:
+		- add on the end of the file the following lines and replace /path/to/lights/folder with the path where you have compiled the scripts:
          
 		<blockquote>www-data raspberrypi=NOPASSWD: /path/to/lights/folder/./<br />
         www-data raspberrypi=NOPASSWD: /opt/vc/bin/./<br />

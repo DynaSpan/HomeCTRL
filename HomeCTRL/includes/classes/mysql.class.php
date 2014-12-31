@@ -19,23 +19,21 @@ class MySQL
     private $tempFetch;
     private $tempNumRows;
     
-    public function setConnection($strMysqlUsername, $strMysqlPassword, $strMysqlDatabase, $strMysqlHost = 'localhost', $boolDevelopMode = false)
+    public function __construct($strMysqlUsername, $strMysqlPassword, $strMysqlDatabase, $strMysqlHost = 'localhost', $boolDevelopMode = false)
     {
         $this->_mysqlUsername   = $strMysqlUsername;
         $this->_mysqlPassword   = $strMysqlPassword;
         $this->_mysqlDatabase   = $strMysqlDatabase;
         $this->_mysqlHost       = $strMysqlHost;
         $this->developMode      = $boolDevelopMode;
-        
-        $this->connect();
     }
     
-    private function connect()
+    public function connect()
     {
         $this->_con = @mysqli_connect($this->_mysqlHost, $this->_mysqlUsername, $this->_mysqlPassword, $this->_mysqlDatabase);
         
         if (!$this->_con)
-            $this->createError();
+            die('Could not open MySQL connection, make sure your login details are correct');
     }
     
     public function query($query)
