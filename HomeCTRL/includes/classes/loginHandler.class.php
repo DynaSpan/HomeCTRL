@@ -17,4 +17,12 @@ class LoginHandler
         $this->loginUsername = $lUsername;
         $this->loginPassword = $lPassword;
     }
+    
+    public function isLoggedIn()
+    {
+        if (isset($_SESSION['uLoggedIn']) && isset($_SESSION['uIp']) && $_SESSION['uIp'] == $_SERVER['REMOTE_ADDR'])
+            return true;
+            
+        return false;
+    }
 }
