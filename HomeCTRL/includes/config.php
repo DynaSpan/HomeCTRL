@@ -32,8 +32,10 @@ require_once('classes/main.class.php');
 require_once('classes/mysql.class.php');
 require_once('classes/loginHandler.class.php');
 require_once('classes/piHandler.class.php');
+require_once('classes/template.class.php');
 
 $main           = new Main($siteUrl);
 $mysql          = new MySQL($mysqlHost, $mysqlUser, $mysqlPass, $mysqlDb);
 $loginHandler   = new LoginHandler($loginUsername, $loginPassword);
 $piHandler      = new PiHandler($wiringPiFolder, $lightsFolder);
+$template       = new Template($siteUrl);
