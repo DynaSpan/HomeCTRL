@@ -23,19 +23,19 @@ else
         
     }
     
-    $template->getHeader('Inloggen');
+    $template->getHeader('Login');
     
     ?>
   <div class="loginBox">
     
-    <h1>Inloggen</h1>
+    <h1>Login</h1>
     
-    <p>U moet inloggen voordat u verder kunt.</p>
+    <p>You must login before you can continue.</p>
     
     <form action="" method="post">
-      <input type="text" name="uUsername" placeholder="Gebruikersnaam" />
-      <input type="password" name="uPassword" placeholder="Wachtwoord" />
-      <input type="submit" value="Inloggen" />
+      <input type="text" name="uUsername" placeholder="Username" />
+      <input type="password" name="uPassword" placeholder="Password" />
+      <input type="submit" value="Login" />
       <div class="clear"></div>
     </form>
     
