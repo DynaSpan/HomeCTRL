@@ -35,6 +35,9 @@ class Template
     
     public function getFooter()
     {
-        
+        ?>
+</body>
+</html>
+        <?php   
     }
 }

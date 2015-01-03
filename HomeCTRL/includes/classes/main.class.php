@@ -15,4 +15,9 @@ class Main
     {
         $this->siteUrl = $mSiteUrl;
     }
+    
+    public function htmlEntities($htmlString)
+    {
+        return htmlentities($htmlString, ENT_QUOTES, "utf-8");
+    }
 }
