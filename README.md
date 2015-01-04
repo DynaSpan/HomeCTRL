@@ -37,6 +37,8 @@ This system is based on a tutorial from Tweaker WeeJeWel. You can find his tutor
 
 5. Upload the HomeCTRL files to the www folder (/var/www/ unless set otherwise)
 
-6. Edit the config file in /includes/config.php and fill in your settings
+6. Make sure your files have the right permissions by chmod: <blockquote>sudo chmod -R 755 /var/www</blockquote>
 
-7. Go to your favorite browser and type in the ip address of your Pi. It should all work now!
+7. Edit the config file in /includes/config.php and fill in your settings
+
+8. Go to your favorite browser and type in the ip address of your Pi. It should all work now!
