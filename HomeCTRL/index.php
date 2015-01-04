@@ -285,9 +285,7 @@ if ($loginHandler->isLoggedIn())
             $dipToDigit = bindec(strrev($rFetch['rDip']));
             
             if ($rFetch['rStatus'] == 0)
-            {
                 $newStatus = 'on';
-            }
             else
                 $newStatus = 'off';
             
