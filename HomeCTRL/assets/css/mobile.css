@@ -1,0 +1,17 @@
+body {
+    width: 100% !important;
+    overflow: hidden !important;
+}
+.homeBox, .loginBox {
+    width: 90% !important;
+    margin: 0 0 10px 0 !important;
+    padding: 5% !important;
+    overflow: hidden;
+}
+.homeBox table {
+    width: 100%;
+    overflow: hidden;
+}
+.homeBox .relayHolder {
+    width: 100%;
+}

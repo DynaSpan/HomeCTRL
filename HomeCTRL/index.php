@@ -37,11 +37,11 @@ if ($loginHandler->isLoggedIn())
         {
             if (trim($_POST['rName']) == '')
                 $error = 'Please fill in a name';
-            else if ($_POST['rBrand'] == 'false')
+            else if (!in_array($_POST['rBrand'], $arrRelayBrands))
                 $error = 'Please select a brand';
-            else if ($_POST['rLetter'] == 'false')
+            else if (!in_array($_POST['rLetter'], array('a', 'b', 'c', 'd', 'e')))
                 $error = 'Please select a letter';
-            else if (!is_numeric($_POST['rDip_1']) || !is_numeric($_POST['rDip_2']) || !is_numeric($_POST['rDip_3']) || !is_numeric($_POST['rDip_4']) || !is_numeric($_POST['rDip_5']))
+            else if (!in_array($_POST['rDip_1'], array('0', '1')) || !in_array($_POST['rDip_2'], array('0', '1')) || !in_array($_POST['rDip_3'], array('0', '1')) || !in_array($_POST['rDip_4'], array('0', '1')) || !in_array($_POST['rDip_5'], array('0', '1')))
                 $error = 'Please fill in a valid dip value';
             else 
             {
@@ -139,11 +139,11 @@ if ($loginHandler->isLoggedIn())
             {
                 if (trim($_POST['rName']) == '')
                     $error = 'Please fill in a name';
-                else if ($_POST['rBrand'] == 'false')
+                else if (!in_array($_POST['rBrand'], $arrRelayBrands))
                     $error = 'Please select a brand';
-                else if ($_POST['rLetter'] == 'false')
+                else if (!in_array($_POST['rLetter'], array('a', 'b', 'c', 'd', 'e')))
                     $error = 'Please select a letter';
-                else if (!is_numeric($_POST['rDip_1']) || !is_numeric($_POST['rDip_2']) || !is_numeric($_POST['rDip_3']) || !is_numeric($_POST['rDip_4']) || !is_numeric($_POST['rDip_5']))
+                else if (!in_array($_POST['rDip_1'], array('0', '1')) || !in_array($_POST['rDip_2'], array('0', '1')) || !in_array($_POST['rDip_3'], array('0', '1')) || !in_array($_POST['rDip_4'], array('0', '1')) || !in_array($_POST['rDip_5'], array('0', '1')))
                     $error = 'Please fill in a valid dip value';
                 else 
                 {
@@ -162,6 +162,7 @@ if ($loginHandler->isLoggedIn())
                   
             <p>
               <a href="<?php echo $main->siteUrl; ?>" class="button">&laquo; Back to home</a>
+              <a href="<?php echo $main->siteUrl; ?>?del=<?php echo $rFetch['rId']; ?>" class="button">&raquo; Delete this relay</a>
             </p>
             
             <p>Below, you can edit the wireless relay.</p>
@@ -222,10 +223,93 @@ if ($loginHandler->isLoggedIn())
             $template->getFooter();
         }
     }
-    else if (isset($_GET['delete']))
+    else if (isset($_GET['del']))
     {
+        $rQuery = $mysql->query("SELECT * FROM rRelay WHERE rId = '" . $mysql->escape($_GET['del']) . "'");
         
+        if ($mysql->num_rows($rQuery) == 0)
+        {
+            $template->getHeader('Error');
+            
+            echo '<p><strong>Could not find this relay.</strong>';
+            
+            $template->getFooter();
+        }
+        else
+        {
+            $rFetch = $mysql->fetch($rQuery);
+            
+            if (isset($_GET['c']))
+            {
+                $mysql->query("DELETE FROM rRelay WHERE rId = '" . $mysql->escape($rFetch['rId']) . "'");
+                header("Location: " . $main->siteUrl);
+            }
+            else
+            {
+                $template->getHeader('Confirm delete');
+                
+                ?>
+          <div class="homeBox">
+           
+            <h1>Confirm delete</h1>
+                  
+            <p>
+              <a href="<?php echo $main->siteUrl; ?>" class="button">&laquo; Back to home</a>
+            </p>
+            
+            <p>Are you sure you want to delete this relay?</p>
+            
+            <p>
+              <a href="<?php echo $main->siteUrl; ?>?del=<?php echo $rFetch['rId']; ?>&c" class="button">&raquo; Yes, delete this relay</a>
+              <a href="<?php echo $main->siteUrl; ?>?edit=<?php echo $rFetch['rId']; ?>" class="button">&laquo; Cancel</a>
+            </p>
+            
+          </div>
+                <?php
+                
+                $template->getFooter();
+            }
+            
+        }
+    }
+    else if (isset($_GET['switchState']))
+    {
+        $rQuery = $mysql->query("SELECT * FROM rRelay WHERE rId = '" . $mysql->escape($_GET['switchState']) . "'");
         
+        if ($mysql->num_rows($rQuery) == 0)
+        {
+            echo 'Could not find this relay.';
+        }
+        else
+        {
+            $rFetch = $mysql->fetch($rQuery);
+            $dipToDigit = bindec(strrev($rFetch['rDip']));
+            
+            if ($rFetch['rStatus'] == 0)
+            {
+                $newStatus = 'on';
+            }
+            else
+                $newStatus = 'off';
+            
+            $piHandler->switchLight($rFetch['rBrand'], $rFetch['rLetter'], $dipToDigit, $newStatus);
+            
+            if ($rFetch['rStatus'] == 0)
+            {
+                $mysql->query("UPDATE rRelay SET rStatus = 1 WHERE rId = '" . $mysql->escape($rFetch['rId']) . "'");
+                echo '1';
+            }
+            else
+            {
+                $mysql->query("UPDATE rRelay SET rStatus = 0 WHERE rId = '" . $mysql->escape($rFetch['rId']) . "'");
+                echo '0';
+            }
+        }
+    }
+    else if (isset($_GET['logout']))
+    {
+        $loginHandler->endSession();
+        header("Location: " . $main->siteUrl);
     }
     else
     {
@@ -238,6 +322,7 @@ if ($loginHandler->isLoggedIn())
                 
         <p>
           <a href="?new" class="button">&raquo; Add a wireless relays</a>
+          <a href="?logout" class="button">&raquo; Log out</a>
         </p>
         
         <p>Welcome to HomeCTRL.</p>
@@ -261,8 +346,13 @@ if ($loginHandler->isLoggedIn())
             {
                 ?>
                 <tr>
-                  <td>
-                    <a href="?edit=<?php echo $rFetch['rId']; ?>"><?php echo $main->htmlEntities($rFetch['rName']); ?></a>
+                  <td class="relayHolder">
+                    <a href="?edit=<?php echo $rFetch['rId']; ?>" class="relayName"><?php echo $main->htmlEntities($rFetch['rName']); ?></a>
+                  </td>
+                  <td style="text-align: right;">
+                    <div class="switcher off" id="s_<?php echo $rFetch['rId']; ?>" onclick="switchState(<?php echo $rFetch['rId']; ?>);">
+                      <div class="mover"></div>
+                    </div>
                   </td>
                 </tr>
                 <?php
@@ -284,6 +374,12 @@ if ($loginHandler->isLoggedIn())
 }
 else
 {
+    if (isset($_COOKIE['sSecureKey']) && $_COOKIE['sSecureKey'] == md5($_SERVER['HTTP_USER_AGENT']))
+    {
+        $loginHandler->createSession();
+        header("Location: " . $main->siteUrl);
+    }
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if (isset($_POST['uUsername']) && isset($_POST['uPassword']))

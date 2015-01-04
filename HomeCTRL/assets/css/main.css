@@ -1,0 +1,132 @@
+/** reset */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background: #DADADA;
+    font-family: Helvetica;
+    font-size: 16px;
+}
+.clear {
+    clear: both;
+}
+
+.homeBox {
+    width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: #FFF;
+}
+.homeBox h1 {
+    font-weight: lighter;
+    font-size: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #3498db;
+}
+.homeBox p {
+    padding: 7.5px 0;
+}
+.homeBox a.button {
+    display: inline-block;
+    padding: 12px 7px;
+    margin-right: 10px;
+    background: #3498db;
+    color: #FFF;
+    border: 1px #3498db solid;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.homeBox a.button:hover {
+    background: #2980b9;
+    cursor: pointer;
+}
+.homeBox input, .homeBox select {
+    border: 1px #DADADA solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Helvetica;
+    font-size: 16px;
+    margin: 5px 0;
+}
+.homeBox input[type="submit"] {
+    background: #3498db;
+    color: #FFF;
+    border: 1px #3498db solid;
+}
+.homeBox input[type="submit"]:hover {
+    background: #2980b9;
+    cursor: pointer;
+}
+.homeBox a.relayName {
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 18px;
+}
+.homeBox .switcher {
+    border-radius: 40px;
+    width: 70px;
+    height: 40px;
+    float: right;
+    cursor: pointer;
+}
+.homeBox .switcher.off {
+    background: #c0392b;
+}
+.homeBox .switcher.on {
+    background: #27ae60;
+}
+.homeBox .switcher.loading {
+    background: #bdc3c7;
+}
+.homeBox .switcher .mover {
+    height: 38px;
+    width: 38px;
+    border-radius: 100%;
+    background: #FFF;
+    margin: 1px 1px;
+}
+.homeBox .relayHolder {
+    width: 400px;
+}
+
+.loginBox {
+    width: 500px;
+    margin: 10% auto 0 auto;
+    background: #FFF;
+    padding: 15px;
+    border-radius: 10px;
+}
+.loginBox h1 {
+    font-weight: lighter;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.loginBox p {
+    margin-bottom: 5px;
+}
+.loginBox input {
+    border: 1px #DADADA solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Helvetica;
+    font-size: 16px;
+    margin: 5px 2.5px;
+    float: left;
+}
+.loginBox input[type="submit"] {
+    background: #3498db;
+    color: #FFF;
+    border: 1px #3498db solid;
+}
+.loginBox input[type="submit"]:hover {
+    background: #2980b9;
+    cursor: pointer;
+}

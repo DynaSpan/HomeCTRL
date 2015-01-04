@@ -30,12 +30,24 @@ class LoginHandler
     {
         if ($username == $this->loginUsername && $password == $this->loginPassword)
         {
-            $_SESSION['uLoggedIn'] = true;
-            $_SESSION['uIp']       = $_SERVER['REMOTE_ADDR'];
+            $this->createSession();
             
             return true;
         }
         
         return false;
+    }
+    
+    public function createSession()
+    {
+        $_SESSION['uLoggedIn'] = true;
+        $_SESSION['uIp']       = $_SERVER['REMOTE_ADDR'];
+        setcookie('sSecureKey', md5($_SERVER['HTTP_USER_AGENT']));
+    }
+    
+    public function endSession()
+    {
+        session_destroy();
+        setcookie('sSecureKey', '', time() - 60*60*24*3);
     }
 }

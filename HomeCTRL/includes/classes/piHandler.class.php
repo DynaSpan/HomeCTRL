@@ -17,4 +17,14 @@ class PiHandler
         $this->wiringPiPath = $wpPath;
         $this->lightsPath   = $lPath;
     }
+    
+    public function switchLight($sBrand, $sLetter, $sDip, $sNewStatus)
+    {
+        $this->executeCommand('sudo ' . $this->lightsPath . $sBrand . ' ' . $sDip . ' ' . strtoupper($sLetter) . ' ' . $sNewStatus);
+    }
+    
+    private function executeCommand($command)
+    {
+        return shell_exec($command);
+    }
 }
