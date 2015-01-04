@@ -34,7 +34,7 @@ $lightsFolder   = '/var/wwwcontrols/lights/'; // path to lights folder including
 $mysqlHost = 'localhost'; // 99.9% of the times localhost
 $mysqlUser = 'root'; // your MySQL username
 $mysqlPass = ''; // your MySQL password
-$mysqlDb   = 'homectrl'; // your MySQL database name (most of the times username_dbname)
+$mysqlDb   = ''; // your MySQL database name
 
 /** DO NOT CHANGE BELOW THIS */
 

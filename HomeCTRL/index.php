@@ -269,7 +269,6 @@ if ($loginHandler->isLoggedIn())
                 
                 $template->getFooter();
             }
-            
         }
     }
     else if (isset($_GET['switchState']))
@@ -363,7 +362,6 @@ if ($loginHandler->isLoggedIn())
             
             <p><em>You can press on a relays name to change the relay or delete it</em></p>';
         }
-        
         ?>
       
       </div>
