@@ -93,6 +93,9 @@ body {
     background: #FFF;
     margin: 1px 1px;
 }
+.homeBox .switcher.on .mover {
+    margin-left:31px;
+}
 .homeBox .relayHolder {
     width: 400px;
 }

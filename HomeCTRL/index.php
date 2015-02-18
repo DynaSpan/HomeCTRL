@@ -347,7 +347,7 @@ if ($loginHandler->isLoggedIn())
                     <a href="?edit=<?php echo $rFetch['rId']; ?>" class="relayName"><?php echo $main->htmlEntities($rFetch['rName']); ?></a>
                   </td>
                   <td style="text-align: right;">
-                    <div class="switcher off" id="s_<?php echo $rFetch['rId']; ?>" onclick="switchState(<?php echo $rFetch['rId']; ?>);">
+                    <div class="switcher <?php echo ($rFetch['rStatus'] == 0) ? 'off' : 'on'; ?>" id="s_<?php echo $rFetch['rId']; ?>" onclick="switchState(<?php echo $rFetch['rId']; ?>);">
                       <div class="mover"></div>
                     </div>
                   </td>
